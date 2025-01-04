@@ -11,6 +11,13 @@
         padding: 0;
         font-family: sans-serif;
       }
+      .custom-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .custom-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
     </style>
     <title>Demo-Messenger</title>
   </head>
@@ -19,7 +26,7 @@
       <div class="relative border h-[90%] w-full bg-pink-500 p-4">
         <div
           id="messages"
-          class="bg-white border rounded-xl min-h-12 h-full w-full p-2 overflow-y-auto"
+          class="bg-white border rounded-xl max-h-[90%] h-full w-full p-2 overflow-y-auto custom-scrollbar"
         ></div>
       </div>
 

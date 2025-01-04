@@ -15,14 +15,22 @@ function createMessage(user, message) {
 }
 
 sendMessage.addEventListener("click", () => {
-    socket.emit("new-message", {
-        user : "Me",
+    socket.emit("chat", {
+        user : "Arshit",
         message : currMessage.value
     });
     messages.appendChild(createMessage("Me", currMessage.value));
     currMessage.value = "";
+    messages.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
 });
 
-socket.on("new-message", (msg) => {
+socket.on("chat", (msg) => {
     messages.appendChild(createMessage(msg.user, msg.message));
+    messages.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
 })

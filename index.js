@@ -20,11 +20,8 @@ app.route("/").get((req, res) => {
 
 io.on("connection", (socket) => {
     console.log("Connection established");
-    socket.on("new-message", (msg) => {
-        io.emit("new-message", {
-            user : "Friend",
-            message : "Recieved : " + msg.message
-        });
+    socket.on("chat", (msg) => {
+      socket.broadcast.emit('chat', msg);
     });
 })
 
